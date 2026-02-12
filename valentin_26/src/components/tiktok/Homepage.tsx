@@ -1,14 +1,42 @@
 import { Bookmark, Forward, Heart, MessageCircleMore } from "lucide-react";
 import profile_picture from "../../assets/tiktok/profile_picture.jpg";
+import me_picture from "../../assets/tiktok/me_picture.webp";
 import VideoPlayer from "./VideoPlayer";
+import { useState } from "react";
+import Comments from "./Comments";
 
 export default function Homepage() {
+    const [numLikes, setNumLikes] = useState(38);
+    const [liked, setLiked] = useState(false);
+    const [numSaves, setNumSaves] = useState(9);
+    const [saved, setSaved] = useState(false);
+    const [isCommentOpen, setCommentOpen] = useState(false);
+    const [isEasterEggActive, setEasterEggActive] = useState(false);
+
+    const handleLike = () => {
+        if (liked) {
+            setNumLikes(numLikes - 1);
+        } else {
+            setNumLikes(numLikes + 1);
+        }
+        setLiked(!liked);
+    }
+
+    const handleSave = () => {
+        if (saved) {
+            setNumSaves(numSaves - 1);
+        } else {
+            setNumSaves(numSaves + 1);
+        }
+        setSaved(!saved);
+    }
+
     return (
         <div className="w-full h-svh flex relative overflow-hidden">
             {/* Title && caption */}
             <div className="w-4/5 h-min absolute bottom-0 left-0 flex flex-col p-3 z-10">
-                <h1 className="font-bold text-lg">Bea ⭐️<span className="text-zinc-400"> • 6 ore fa</span></h1>
-                <p className="text-zinc-600">Voi come reagite? #università #laurea #esami</p>
+                <h1 className="font-bold text-md text-white">Bea ☆<span className="text-zinc-400"> • 6 ore fa</span></h1>
+                <p className="text-white/80 text-md">Voi come reagite? #università #laurea #esami</p>
             </div>
             <div className="w-1/5 h-min absolute bottom-0 right-0 z-10">
                 {/* Foto profilo */}
@@ -20,43 +48,51 @@ export default function Homepage() {
                 {/* Like */}
                 <div className="w-full h-[10svh] flex flex-col items-center justify-center p-2">
                     <Heart
-                        color="red"
-                        fill="red"
+                        onClick={() => handleLike()}
+                        color={liked ? "red" : "white"}
+                        fill={liked ? "red" : "white"}
                         className="h-9 w-9 transition-transform duration-200 hover:scale-125 cursor-pointer" />
-                    <p className="font-semibold text-zinc-100/80">2222</p>
+                    <p className="font-semibold text-zinc-100">{numLikes}</p>
                 </div>
                 {/* Comments */}
                 <div className="w-full h-[10svh] flex flex-col items-center justify-center p-2">
                     <MessageCircleMore
-                        color="white"
-                        fill="trasparent"
+                        onClick={() => setCommentOpen(true)}
+                        color="black"
+                        fill="white"
                         className="h-9 w-9 transition-transform duration-200 hover:scale-125 cursor-pointer" />
-                    <p className="font-semibold text-zinc-100/80">451</p>
+                    <p className="font-semibold text-zinc-100">2022</p>
                 </div>
                 {/* Save */}
                 <div className="w-full h-[10svh] flex flex-col items-center justify-center p-2">
                     <Bookmark
-                        color="yellow"
-                        fill="yellow"
+                        onClick={() => handleSave()}
+                        color={saved ? "yellow" : "white"}
+                        fill={saved ? "yellow" : "white"}
                         className="h-9 w-9 transition-transform duration-200 hover:scale-125 cursor-pointer" />
-                    <p className="font-semibold text-zinc-100/80">78</p>
+                    <p className="font-semibold text-zinc-100">{numSaves}</p>
                 </div>
                 {/* Share */}
                 <div className="w-full h-[10svh] flex flex-col items-center justify-center p-2 ">
                     <Forward
-                        color="gray"
-                        fill="gray"
+                        color="white"
+                        fill="white"
                         className="h-9 w-9 transition-transform duration-200 hover:scale-125 cursor-pointer" />
+                    <p className="font-semibold text-zinc-100">1</p>
                 </div>
-                {/* Song */}
+                {/* Easter Egg */}
                 <div className="w-full h-[10svh] flex items-center justify-center p-2">
-                    <div className="w-12 h-12 rounded-full bg-yellow-500" />
+                    <img
+                        onClick={() => setEasterEggActive(!isEasterEggActive)}
+                        src={me_picture} className="w-12 h-12 rounded-full animate-spin" />
                 </div>
             </div>
             {/* Video */}
-            <VideoPlayer />
-            {/* Migliorie */}
-            <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-black/70 to-transparent pointer-events-none"></div>
+            <VideoPlayer isEasterEggActive={isEasterEggActive} />
+            {/* Sfumatura scura */}
+            <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
+            {/* Comments */}
+            {isCommentOpen && <Comments setCommentOpen={setCommentOpen} />}
         </div>
     )
 }

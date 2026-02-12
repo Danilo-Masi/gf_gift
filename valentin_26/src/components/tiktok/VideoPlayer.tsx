@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import test_video from "../../assets/tiktok/test_video.mp4";
+import crueza_video from "../../assets/tiktok/crueza.mp4";
 import { FastForward, Play, Rewind } from "lucide-react";
 
-export default function VideoPlayer() {
+export default function VideoPlayer({ isEasterEggActive }: { isEasterEggActive: boolean }) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const handlePlayPause = () => {
@@ -29,7 +30,7 @@ export default function VideoPlayer() {
         <div className="relative w-full h-full flex items-center justify-center">
             <video
                 ref={videoRef}
-                src={test_video}
+                src={isEasterEggActive ? crueza_video : test_video}
                 className="absolute top-0 left-0 w-full h-full object-cover"
                 controls={false}
                 muted={false} />
@@ -37,17 +38,17 @@ export default function VideoPlayer() {
                 <button
                     onClick={handleRewind}
                     className="text-white px-3 py-1 rounded hover:bg-white/20 transition">
-                    <Rewind fill="gray" color="gray" className="w-8 h-8 opacity-95"/>
+                    <Rewind fill="gray" color="gray" className="w-8 h-8 opacity-95" />
                 </button>
                 <button
                     onClick={handlePlayPause}
                     className="text-white px-3 py-1 rounded hover:bg-white/20 transition">
-                    <Play fill="gray" color="gray" className="w-15 h-15 opacity-95"/>
+                    <Play fill="gray" color="gray" className="w-15 h-15 opacity-95" />
                 </button>
                 <button
                     onClick={handleForward}
                     className="text-white px-3 py-1 rounded hover:bg-white/20 transition">
-                    <FastForward fill="gray" color="gray" className="w-8 h-8 opacity-95"/>
+                    <FastForward fill="gray" color="gray" className="w-8 h-8 opacity-95" />
                 </button>
             </div>
         </div>
