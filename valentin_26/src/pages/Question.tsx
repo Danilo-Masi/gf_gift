@@ -34,7 +34,7 @@ export default function Question() {
     setTimeout(() => {
       setSuccess(false);
       navigate("/tiktok", { replace: true });
-    }, 2500);
+    }, 3500);
   };
 
   const handleNo = () => {
