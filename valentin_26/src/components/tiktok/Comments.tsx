@@ -1,9 +1,9 @@
 import { X } from "lucide-react";
-import picture_1 from "../../assets/tiktok/picture_1.jpeg";
-import picture_2 from "../../assets/tiktok/picture_2.jpeg";
-import picture_3 from "../../assets/tiktok/picture_3.jpeg";
-import picture_4 from "../../assets/tiktok/picture_4.jpeg";
-import picture_5 from "../../assets/tiktok/picture_5.jpg";
+import picture_1 from "../../assets/tiktok/picture_1.webp";
+import picture_2 from "../../assets/tiktok/picture_2.webp";
+import picture_3 from "../../assets/tiktok/picture_3.webp";
+import picture_4 from "../../assets/tiktok/picture_4.webp";
+import picture_5 from "../../assets/tiktok/picture_5.webp";
 
 const comments = [
     { picture: picture_1, username: "veryladygaga1", comment: "IOO, IOO...CHECCO, t mett incint,t lasc e t facc e corn...", time: "1o" },

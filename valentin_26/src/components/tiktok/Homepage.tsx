@@ -1,5 +1,5 @@
 import { Bookmark, Forward, Heart, MessageCircleMore } from "lucide-react";
-import profile_picture from "../../assets/tiktok/profile_picture.jpg";
+import profile_picture from "../../assets/tiktok/profile_picture.webp";
 import me_picture from "../../assets/tiktok/me_picture.webp";
 import VideoPlayer from "./VideoPlayer";
 import { useState } from "react";
