@@ -7,25 +7,25 @@ const risposte = [
     {
         domanda: "Come è il giubotto del tuo fidanzato?",
         placeholder: "c....o",
-        risposta: "ciao",
+        risposta: "cacato",
         errore: "Puzza puzza puzza",
     },
     {
         domanda: "Cosa dice un romano quando ha la nausea?",
-        placeholder: "me ... a s....ì m...e",
-        risposta: "ciao",
+        placeholder: "me ... a s....i m...e",
+        risposta: "me sto a senti male",
         errore: "Il pensatore sul cesso",
     },
     {
         domanda: "Il voto di laurea che piu ti identifica?",
         placeholder: "1..",
-        risposta: "ciao",
+        risposta: "104",
         errore: "Accompagnamento",
     },
     {
         domanda: "Famosa frase anglosassone pronunciata da un famoso fidanzato poco anglosassone",
-        placeholder: "Where .. t.. ..x",
-        risposta: "ciao",
+        placeholder: "Where .. t.. ..x?",
+        risposta: "where is the tax?",
         errore: "Cazzo vi ridete tu e quella cambia soldi?!",
     }
 ];
@@ -34,7 +34,6 @@ export default function Questionnaire({ setCheckpoint }: { setCheckpoint: (value
     const [values, setValues] = useState<string[]>(Array(risposte.length).fill(""));
     const [errors, setErrors] = useState<boolean[]>(Array(risposte.length).fill(false));
     const [success, setSuccess] = useState(false);
-
 
     const handleChange = (value: string, index: number) => {
         const newValues = [...values];
@@ -87,9 +86,8 @@ export default function Questionnaire({ setCheckpoint }: { setCheckpoint: (value
             </Button>
 
             {success && (
-                <div className="absolute top-0 left-0 w-full h-full bg-black/80 flex flex-col items-center justify-center text-center z-20">
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-transparent via-pink-200/80 to-transparent flex flex-col items-center justify-center text-center z-20">
                     <img src={me_loading} alt="Success" className="w-1/2 h-1/2 object-contain animate-spin" />
-                    <p className="text-white text-2xl font-bold text-balance max-w-60">1° SCHECKPOINT 🥇🏁 SUPERATO</p>
                 </div>
             )}
         </>

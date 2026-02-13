@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import me_loading from "../../assets/test/me_loading2.png";
+import chiara_error from "../../assets/test/chiara_error.png";
 
 const images = [
     { src: survey_1, correct: false },
@@ -47,9 +48,12 @@ export default function ReCaptcha() {
             setResult("success");
             setTimeout(() => {
                 navigate("/question", { replace: true });
-            }, 4000);
+            }, 3000);
         } else {
             setResult("error");
+            setTimeout(() => {
+                setResult(null);
+            }, 3000);
         }
     };
 
@@ -106,16 +110,15 @@ export default function ReCaptcha() {
             </div>
 
             {result === "success" && (
-                <div className="absolute top-0 left-0 w-full h-full bg-black/90 flex flex-col items-center justify-center text-center z-20">
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-transparent via-white/60 to-transparent flex flex-col items-center justify-center text-center z-20">
                     <img src={me_loading} alt="Success" className="w-1/2 h-1/2 object-contain animate-spin" />
-                    <p className="text-white text-2xl font-bold text-balance max-w-60">🌟 2° SCHECKPOINT ✨ SUPERATO</p>
                 </div>
             )}
 
             {result === "error" && (
-                <p className="text-red-500 font-bold text-center">
-                    Riprova 😈
-                </p>
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-transparent via-white/60 to-transparent flex flex-col items-center justify-center text-center z-20">
+                    <img src={chiara_error} alt="Error" className="w-1/2 h-1/2 object-contain animate-ping" />
+                </div>
             )}
         </div>
     )

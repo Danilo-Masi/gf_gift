@@ -7,10 +7,10 @@ import picture_5 from "../../assets/tiktok/picture_5.jpg";
 
 const comments = [
     { picture: picture_1, username: "veryladygaga1", comment: "IOO, IOO...CHECCO, t mett incint,t lasc e t facc e corn...", time: "1o" },
-    { picture: picture_2, username: "mariomario581", comment: "Jun..Jun..(Pereta)...nun si nisciun!!", time: "1o" },
+    { picture: picture_2, username: "mariomario581", comment: "Jun..Jun..(Pereta)😖...nun si nisciun!!", time: "1o" },
     { picture: picture_3, username: "dmasii1", comment: "Buon San Valentino amore mì!! 🤎 ", time: "2o" },
-    { picture: picture_4, username: "nablacosmetics", comment: "Ti abbiamo selezionata! Apri i DM 🌟", time: "4o" },
-    { picture: picture_5, username: "idadifilippo", comment: "Io e te, divano e coperta a vedere una puntata di Case a prima vista? 😘", time: "5o" },
+    { picture: picture_4, username: "nablacosmetics", comment: "The next famous person, Apri i DM STELLA 💫🌟", time: "4o" },
+    { picture: picture_5, username: "idadifilippo", comment: "M fai mpaccj , sei invitata al mio show diva 😘", time: "5o" },
 ];
 
 interface CommentBoxProps {

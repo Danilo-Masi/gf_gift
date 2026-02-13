@@ -4,8 +4,10 @@ import me_picture from "../../assets/tiktok/me_picture.webp";
 import VideoPlayer from "./VideoPlayer";
 import { useState } from "react";
 import Comments from "./Comments";
+import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
+    const navigate = useNavigate();
     const [numLikes, setNumLikes] = useState(38);
     const [liked, setLiked] = useState(false);
     const [numSaves, setNumSaves] = useState(9);
@@ -31,12 +33,16 @@ export default function Homepage() {
         setSaved(!saved);
     }
 
+    const handleShare = () => {
+        navigate("/", { replace: true });
+    }
+
     return (
         <div className="w-full h-svh flex relative overflow-hidden">
             {/* Title && caption */}
             <div className="w-4/5 h-min absolute bottom-0 left-0 flex flex-col p-3 z-10">
                 <h1 className="font-bold text-md text-white">Bea ☆<span className="text-zinc-400"> • 6 ore fa</span></h1>
-                <p className="text-white/80 text-md">Voi come reagite? #università #laurea #esami</p>
+                <p className="text-white/80 text-md">Un pò di entrate sballate, e voi come sbattete lo sportello dei vostri fidanzati?  #tecno #valentinDay #cappellodacane</p>
             </div>
             <div className="w-1/5 h-min absolute bottom-0 right-0 z-10">
                 {/* Foto profilo */}
@@ -75,6 +81,7 @@ export default function Homepage() {
                 {/* Share */}
                 <div className="w-full h-[10svh] flex flex-col items-center justify-center p-2 ">
                     <Forward
+                        onClick={() => handleShare()}
                         color="white"
                         fill="white"
                         className="h-9 w-9 transition-transform duration-200 hover:scale-125 cursor-pointer" />
